@@ -17,6 +17,7 @@ const AddTask = ({ onAdd }) => {
       return
     }
 
+    // grab task and pass the value to onAdd
     onAdd({ text, day, reminder })
 
     // Clear form after submit
