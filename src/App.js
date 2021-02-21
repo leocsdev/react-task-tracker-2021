@@ -35,14 +35,23 @@ function App() {
     ))
   }
 
+  // Toggle reminder
+  const toggleReminder = (id) => {
+    // console.log('Toggled task ', id)
+
+    setTasks(tasks.map((task) => task.id === id ? {...task, reminder: !task.reminder} : task
+
+      ))
+  }
+
   return (
     <div className='container'>
       <Header />
       {
         // Render tasks if there are tasks on the list, show no task msg when there are no msg.
-        tasks.length > 0 ? <Tasks tasks={tasks} onDelete={deleteTask} /> : 'No tasks on the list.'
+        tasks.length > 0 ? <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder}/> : 'No tasks on the list.'
       }
-      
+
     </div>
   );
 }
