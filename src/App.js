@@ -27,13 +27,21 @@ function App() {
 
   // Delete task
   const deleteTask = (id) => {
-    console.log('Delete', id)
+    // console.log('Delete', id)
+
+    // Don't show task when its x button is clicked
+    setTasks(tasks.filter((task) => 
+      task.id !== id
+    ))
   }
 
   return (
     <div className='container'>
       <Header />
-      <Tasks tasks={tasks} onDelete={deleteTask} />
+      {
+        // Render tasks if there are tasks on the list, show no task msg when there are no msg.
+        tasks.length > 0 ? <Tasks tasks={tasks} onDelete={deleteTask} /> : 'No tasks on the list.'
+      }
       
     </div>
   );
