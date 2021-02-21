@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Header from './components/Header'
 import Tasks from './components/Tasks'
+import AddTask from './components/AddTask'
 
 function App() {
 
@@ -47,6 +48,7 @@ function App() {
   return (
     <div className='container'>
       <Header />
+      <AddTask />
       {
         // Render tasks if there are tasks on the list, show no task msg when there are no msg.
         tasks.length > 0 ? <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder}/> : 'No tasks on the list.'
