@@ -28,7 +28,19 @@ function App() {
 
   // Add task
   const addTask = (task) => {
-    console.log(task)
+    // console.log(task)
+
+    // Generate id temporarily
+    const id = Math.floor(Math.random() * 10000) + 1
+
+    // Grab new task that is passed in from AddTask component and add id 
+    const newTask = {id, ...task}
+    console.log(`New Task: ${newTask}`);
+
+    // Save new task to tasks array
+    // ...tasks - get all tasks existing
+    // newTask - add new task to existing tasks array
+    setTasks([...tasks, newTask])
   }
 
   // Delete task
