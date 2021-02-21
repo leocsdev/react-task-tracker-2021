@@ -1,14 +1,32 @@
 // Add component leve state
 import { useState } from 'react'
 
-const AddTask = () => {
+const AddTask = ({ onAdd }) => {
   
   const [text, setText] = useState('')
   const [day, setDay] = useState('')
   const [reminder, setReminder] = useState(false)
 
+  const onSubmit = (e) => {
+    // Prevent submitting to a page
+    e.preventDefault()
+
+    // Add basic validation
+    if (!text) {
+      alert('Please add a task.')
+      return
+    }
+
+    onAdd({ text, day, reminder })
+
+    // Clear form after submit
+    setText('')
+    setDay('')
+    setReminder(false)
+  }
+
   return (
-    <form className='add-form'>
+    <form className='add-form' onSubmit={(onSubmit)}>
       <div className='form-control'>
         <label>Task</label>
         <input 
@@ -32,7 +50,8 @@ const AddTask = () => {
       <div className='form-control form-control-check'>
         <label>Set Reminder</label>
         <input 
-          type='checkbox' 
+          type='checkbox'
+          checked={reminder}
           value={reminder} 
           onChange={(e) => setReminder(e.currentTarget.checked)} 
         />

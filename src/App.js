@@ -26,6 +26,11 @@ function App() {
     },
   ])
 
+  // Add task
+  const addTask = (task) => {
+    console.log(task)
+  }
+
   // Delete task
   const deleteTask = (id) => {
     // console.log('Delete', id)
@@ -48,7 +53,7 @@ function App() {
   return (
     <div className='container'>
       <Header />
-      <AddTask />
+      <AddTask onAdd={addTask} />
       {
         // Render tasks if there are tasks on the list, show no task msg when there are no msg.
         tasks.length > 0 ? <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder}/> : 'No tasks on the list.'
